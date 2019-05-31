@@ -1,0 +1,10 @@
+{
+    "AppSyncApiName": "player",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authcosplyFestivalCognito",
+            "Outputs.UserPoolId"
+        ]
+    }
+}

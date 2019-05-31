@@ -1,0 +1,9 @@
+type Player
+#  @model(queries: null, mutations: {create: "createPlayer", update: "updatePlayer"})
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  name: String!
+  decks: [[Int]]
+}
