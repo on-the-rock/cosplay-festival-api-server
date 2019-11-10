@@ -1,5 +1,5 @@
 projects:
-  player:
+  framecbattle:
     schemaPath: src/graphql/schema.json
     includes:
       - src/graphql/**/*.js
@@ -10,7 +10,6 @@ projects:
         codeGenTarget: javascript
         generatedFileName: ''
         docsFilePath: src/graphql
-        graphQLApiId: 7i5jznde4zdojjobpo7gmcgatq
-      endpoints:
-        prod: >-
-          https://fjzbqou6c5gbbhwosplaufomz4.appsync-api.ap-northeast-1.amazonaws.com/graphql
+extensions:
+  amplify:
+    version: 3

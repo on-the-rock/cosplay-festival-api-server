@@ -1,16 +1,25 @@
 {
 	"auth": {
-		"cosplyFestivalCognito": {
+		"framecbattle34f51767": {
 			"service": "Cognito",
-			"providerPlugin": "awscloudformation"
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
 		}
 	},
 	"api": {
-		"player": {
+		"framecbattle": {
 			"service": "AppSync",
 			"providerPlugin": "awscloudformation",
 			"output": {
-				"securityType": "AMAZON_COGNITO_USER_POOLS"
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
+						"userPoolConfig": {
+							"userPoolId": "authframecbattle34f51767"
+						}
+					}
+				}
 			}
 		}
 	}
