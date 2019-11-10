@@ -1,0 +1,29 @@
+type Player
+@model(mutations: {create: "createPlayer", update: "updatePlayer"})
+@auth(rules: [{allow: owner, operations: [create, update]}])
+{
+  id: ID!
+  name: String!
+  cards: [Card] @connection
+  decks: [Deck] @connection
+}
+
+type Deck
+@model(queries: null, mutations: {create: "createDeck", update: "updateDeck"})
+@auth(rules: [{allow: owner, operations: [create, update]}])
+{
+  id: ID!
+  name: String
+  cards: [Card]! @connection
+}
+
+type Card
+@model(queries: null, mutations: {create: "createCard", update: "updateCard"})
+@auth(rules: [{allow: owner, operations: [create, update]}])
+{
+  id: ID!
+  # TODO: プレイヤーが保有しているFrameかを検証する必要がある
+  frameId: String!
+  name: String
+  image: String
+}
