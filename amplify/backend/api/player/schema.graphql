@@ -1,9 +1,65 @@
 type Player
 #  @model(queries: null, mutations: {create: "createPlayer", update: "updatePlayer"})
-  @model
-  @auth(rules: [{allow: owner}])
+  @model  @auth(rules: [{allow: owner, operations: [create, update]}])
 {
   id: ID!
   name: String!
   decks: [[Int]]
+}
+
+type PlayerCard
+  @model
+  @auth(rules: [{allow: owner, operations: [create, update]}])
+{
+  cards: [Card]!
+}
+
+type Card
+  @model
+{
+  id: ID!
+  name: String!
+  frame: Frame!
+  image: String!
+}
+
+type Frame
+  @model
+{
+  id: ID!
+  attack: Int!
+  hitPoint: Int!
+  rarity: Rarity!
+  cost: Int!
+  attribute: AttributeType!
+  attackType: AttackType!
+  specials: [String]!
+  image: String!
+  master: Boolean!
+}
+
+# TODO: レアリティの設計ができていれば当てはめる
+enum Rarity
+{
+  common
+  rare
+  epic
+  legend
+  unique
+}
+
+# TODO: 攻撃の型の設計ができていれば当てはめる
+enum AttackType
+{
+  short
+  long
+  all
+}
+
+enum AttributeType
+{
+  normal
+  fire
+  water
+  wind
 }
